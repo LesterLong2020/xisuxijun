@@ -31,3 +31,13 @@ div {
     font-size: 2rem;
     font-weight: 500;
 }
+
+.name {
+    height: 10vh;
+    background: url("./assets/images/avatar.png") no-repeat center;
+}
+
+.img {
+    width: 5rem;
+    height: 5rem;
+}
