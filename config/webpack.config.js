@@ -13,7 +13,7 @@ module.exports = {
     entry: path.resolve(__dirname, '../src/index.js'),
     output: {
         path: path.resolve(__dirname, '../dist'),
-        filename: '[name][hash:5].bundle.js',
+        filename: 'js/[name][hash:5].bundle.js',
         publicPath: './'
     },
     devServer: {
@@ -22,6 +22,16 @@ module.exports = {
         open: true,
         publicPath: '/'
     },
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, '../src')
+        }
+    },
+    performance: {
+        assetFilter: function(assetFilename) {
+            return assetFilename.endsWith('.js');
+        }
+    },
     module: {
         rules: [{
             test: /\.(js|jsx)$/,
@@ -29,21 +39,46 @@ module.exports = {
             exclude: '/node_modules/'
         }, {
             test: /\.css$/,
-            use: [MiniCssExtractPlugin.loader, 'css-loader']
+            use: [{
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                    publicPath: '../'
+                }
+            }, {
+                loader: 'css-loader',
+                options: {
+                    // url: false,
+                }
+            }]
         }, {
             test: /\.(png|svg|jpe?g)$/i,
-            loader: 'url-loader',
-            options: {
-                limit: 8192,
-                name: '/assets/images/[name].[ext]',
-                // outputPath: 'images/',
-            }
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    limit: 8192,
+                    name: 'assets/images/[name].[ext]'
+                }
+            }]
         }, {
             test: /\.(woff|woff2|eot|ttf|otf)$/i,
             loader: 'file-loader',
             options: {
                 name: '[path][name].[ext]',
             }
+        }, {
+            test: /\.htm?l$/,
+            loader: 'html-withimg-loader'
+        }, {
+            test: /\.less$/,
+            use: ['style-loader', {
+                loader: 'css-loader',
+                options: {
+                    importLoaders: 2,
+                    modules: {
+                        localIdentName: '[path]_[name]_[local]_[hash:base64:5]'
+                    },
+                },
+            }, 'less-loader']
         }]
     },
     plugins: [
@@ -52,7 +87,7 @@ module.exports = {
             template: path.resolve(__dirname, '../public/index.html')
         }),
         new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash].css',
+            filename: 'css/[name].[contenthash].css'
         }),
         new CopyWebpackPlugin({
             patterns: [{
