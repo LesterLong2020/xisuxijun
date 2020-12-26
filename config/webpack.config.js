@@ -2,7 +2,7 @@
  * Created by Lester on 2020/12/19
  */
 
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -10,7 +10,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-    entry: path.resolve(__dirname, '../src/index.js'),
+    entry: {
+        main: path.resolve(__dirname, '../src/index.js'),
+        // 'pageTwo/': path.resolve(__dirname, '../src/index.js')
+    },
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'js/[name][hash:5].bundle.js',
@@ -32,11 +35,12 @@ module.exports = {
             return assetFilename.endsWith('.js');
         }
     },
+    devtool: 'source-map',
     module: {
         rules: [{
             test: /\.(js|jsx)$/,
-            use: 'babel-loader',
-            exclude: '/node_modules/'
+            loader: 'babel-loader',
+            exclude: '/node_modules/',
         }, {
             test: /\.css$/,
             use: [{
@@ -44,12 +48,7 @@ module.exports = {
                 options: {
                     publicPath: '../'
                 }
-            }, {
-                loader: 'css-loader',
-                options: {
-                    // url: false,
-                }
-            }]
+            }, 'css-loader']
         }, {
             test: /\.(png|svg|jpe?g)$/i,
             use: [{
@@ -84,8 +83,13 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '../public/index.html')
+            template: path.resolve(__dirname, '../public/index.html'),
         }),
+        /* new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, '../public/index.html'),
+            filename: "pageTwo.html",
+            chunks: ['pageTwo/']
+        }), */
         new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash].css'
         }),

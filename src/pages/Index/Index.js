@@ -5,7 +5,13 @@
 import style from './style.less';
 import Avatar from "@/assets/images/post6.png";
 
-console.log(style)
+const a = '1';
+
+const b = () => {
+  console.log(a)
+};
+
+b();
 
 const render = () => {
   return (
