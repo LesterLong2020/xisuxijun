@@ -106,22 +106,108 @@ PromiseLester.resolve = function (value) {
     })
 };
 
-PromiseLester.prototype.all = function (promises) {
-    const that = this;
-    return new PromiseLester(() => {
+PromiseLester.reject = function (reason) {
+    if (reason instanceof PromiseLester) {
+        return reason;
+    }
+    return new PromiseLester((resolve, reject) => {
+        // thenable对象指的是具有then方法的对象 返回的promise会“跟随”这个thenable的对象，采用它的最终状态
+        if (reason && Object.prototype.toString.call(reason.then) === '[object Function]' ) {
+            setTimeout(() => {
+                reason.then(resolve, reject);
+            }, 0)
+        } else {
+            reject(reason);
+        }
+    })
+};
+
+PromiseLester.all = function (promises) {
+    const values = [];
+    let count = 0;
+    return new PromiseLester((resolve, reject) => {
         try {
             const args = Array.prototype.slice.call(promises);
             if (args.length === 0) {
                 return PromiseLester.resolve([]);
             }
-            
+            for (let i = 0; i < args.length; i++) {
+                PromiseLester.resolve(args[i]).then(res => {
+                    values[i] = res;
+                    count++;
+                    if (count === args.length) {
+                        resolve(values);
+                    }
+                }, err => {
+                    reject(err);
+                })
+            }
         } catch (e) {
-
+            reject(e);
         }
     })
 };
 
-const myPromise = new PromiseLester((resolve, reject) => {
+PromiseLester.race = function (promises) {
+  return new PromiseLester((resolve, reject) => {
+      try {
+          const args = Array.prototype.slice.call(promises);
+          for (let i = 0; i < args.length; i++) {
+              PromiseLester.resolve(args[i]).then(res => {
+                  resolve(res);
+              }, err => {
+                  reject(err);
+              })
+          }
+      } catch (e) {
+          reject(e);
+      }
+  })
+};
+
+
+
+
+const promiseLester1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(1);
+    }, 1000)
+    // reject('错误');
+});
+
+const promiseLester2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(2);
+    }, 500)
+});
+
+const promiseLester3 = new Promise((resolve, reject) => {
+    // resolve(3);
+    // reject('错误');
+});
+
+PromiseLester.race([promiseLester1, promiseLester2, promiseLester3]).then(res => {
+    console.log('resolve race', res);
+}, err => {
+    console.log('reject race', err);
+});
+
+/*PromiseLester.all([promiseLester1, promiseLester2, promiseLester3]).then(res => {
+    console.log('resolve', res);
+}, err => {
+    console.log('reject', err);
+});*/
+
+/*
+PromiseLester.reject('reject test').then(res => {
+    console.log(res)
+}, err => {
+    console.log('reject:', err)
+});
+*/
+
+
+/*const myPromise = new PromiseLester((resolve, reject) => {
     setTimeout(() => {
         // resolve('go!');
         reject('error')
@@ -144,8 +230,39 @@ const myPromise = new PromiseLester((resolve, reject) => {
     console.log('error 1-2', err);
 }).then(res => {
     console.log('lester 1-3', res)
+});*/
+
+const promise1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(1);
+    }, 1000)
+    // reject('错误');
 });
 
+const promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(2);
+    }, 500)
+});
+
+const promise3 = new Promise((resolve, reject) => {
+    resolve(3);
+    // reject('错误');
+});
+
+/*Promise.race([promise1, promise2, promise3]).then(res => {
+    console.log('race', res);
+}, err => {
+    console.log(err, 'race error...')
+});*/
+
+/*
+Promise.all([promise1,promise2,promise3]).then(res => {
+    console.log(res);
+}, err => {
+    console.log(err, 'error...')
+});
+*/
 
 /*const thePromise = new Promise((resolve, reject) => {
     setTimeout(() => {
