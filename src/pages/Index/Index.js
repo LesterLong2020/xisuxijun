@@ -6,6 +6,7 @@ import style from './style.less';
 import Avatar from "@/assets/images/post6.png";
 // import '../Demo/EventLoop';
 import '../Demo/Promise';
+import '../Demo/Test';
 
 
 const render = () => {

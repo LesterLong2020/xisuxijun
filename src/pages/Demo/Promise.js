@@ -167,7 +167,6 @@ PromiseLester.race = function (promises) {
 
 
 
-
 const promiseLester1 = new Promise((resolve, reject) => {
     setTimeout(() => {
         resolve(1);
@@ -186,11 +185,11 @@ const promiseLester3 = new Promise((resolve, reject) => {
     // reject('错误');
 });
 
-PromiseLester.race([promiseLester1, promiseLester2, promiseLester3]).then(res => {
+/*PromiseLester.race([promiseLester1, promiseLester2, promiseLester3]).then(res => {
     console.log('resolve race', res);
 }, err => {
     console.log('reject race', err);
-});
+});*/
 
 /*PromiseLester.all([promiseLester1, promiseLester2, promiseLester3]).then(res => {
     console.log('resolve', res);
@@ -207,14 +206,14 @@ PromiseLester.reject('reject test').then(res => {
 */
 
 
-/*const myPromise = new PromiseLester((resolve, reject) => {
+new PromiseLester((resolve, reject) => {
     setTimeout(() => {
         // resolve('go!');
         reject('error')
     }, 1000)
 }).then(res => {
-    console.log('lester 1-1', res);
-    return 'res 123'
+    console.log('success 1-1', res);
+    return 'res 1'
 }, err => {
     console.log('error 1-1', err);
     return 'err 1'
@@ -224,13 +223,13 @@ PromiseLester.reject('reject test').then(res => {
 }).finally(() => {
     console.log('finally')
 }).then(res => {
-    console.log('lester 1-2', res);
+    console.log('success 1-2', res);
     return 'res 2'
 }, err => {
     console.log('error 1-2', err);
 }).then(res => {
-    console.log('lester 1-3', res)
-});*/
+    console.log('success 1-3', res)
+});
 
 const promise1 = new Promise((resolve, reject) => {
     setTimeout(() => {
