@@ -206,7 +206,7 @@ PromiseLester.reject('reject test').then(res => {
 */
 
 
-new PromiseLester((resolve, reject) => {
+/*new PromiseLester((resolve, reject) => {
     setTimeout(() => {
         // resolve('go!');
         reject('error')
@@ -229,7 +229,7 @@ new PromiseLester((resolve, reject) => {
     console.log('error 1-2', err);
 }).then(res => {
     console.log('success 1-3', res)
-});
+});*/
 
 const promise1 = new Promise((resolve, reject) => {
     setTimeout(() => {
