@@ -3,15 +3,17 @@ import App from './App';
 document.getElementById('root').innerHTML = App;
 
 
-(function (win, doc) {
+(function (win, doc, standardWidth) {
     function resizeBaseFontSize() {
         const { clientWidth, offsetWidth, scrollWidth } = doc.documentElement;
+        const { clientWidth: bodyClientWidth, offsetWidth: bodyOffsetWidth, scrollWidth: bodyScrollWidth } = doc.body;
         const { width: screenWidth, availWidth } = win.screen;
-        const width = clientWidth || offsetWidth || scrollWidth || screenWidth || availWidth || 375;
-        doc.documentElement.style.fontSize = `${(width / 375) * 10}px`;
+        const width = clientWidth || bodyClientWidth || offsetWidth || bodyOffsetWidth || scrollWidth || bodyScrollWidth ||
+          screenWidth || availWidth || standardWidth;
+        doc.documentElement.style.fontSize = `${(width / standardWidth) * 10}px`;
         doc.documentElement.style.opacity = '1';
     }
-    win.addEventListener('load', resizeBaseFontSize, false);
-    win.addEventListener('resize', resizeBaseFontSize, false);
-    win.addEventListener('orientationchange', resizeBaseFontSize, false);
-})(window, document);
+    win.addEventListener('load', resizeBaseFontSize);
+    win.addEventListener('resize', resizeBaseFontSize);
+    win.addEventListener('orientationchange', resizeBaseFontSize);
+})(window, document, 375);
