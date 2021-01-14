@@ -23,7 +23,14 @@ module.exports = {
         compress: true,
         port: 8000,
         open: true,
-        publicPath: '/'
+        publicPath: '/',
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                pathRewrite: { '^/api': '' },
+                changeOrigin: true
+            }
+        }
     },
     resolve: {
         alias: {

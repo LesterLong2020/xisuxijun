@@ -10,7 +10,11 @@ import Avatar from "@/assets/images/post6.png";
 // import '../Demo/CallApplyBind';
 // import '../Demo/New';
 // import '../Demo/DebounceThrottle';
-import '../Demo/This';
+// import '../Demo/This';
+import '../Demo/Http';
+
+const reT = require('../Demo/RequireTest');
+console.log(reT);
 
 
 const render = () => {
@@ -27,6 +31,6 @@ export default render();
 
 /**
  * react原理 generator async await 判断数据类型  数组扁平化去重排序 nginx webpack常用配置 https原理 axios 跨域  transform
- * serverLess pwa service worker 路由
+ * serverLess pwa service worker 路由 require import nodejs express
  * call apply bind Promise Event Loop new操作 vue 防抖节流 闭包 响应式弹性布局 this指向
  */

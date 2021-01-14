@@ -27,6 +27,7 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.0",
     "html-withimg-loader": "^0.1.16",
+    "http-proxy-middleware": "^1.0.6",
     "jsxobj": "^1.1.0",
     "less": "^4.0.0",
     "less-loader": "^7.1.0",
