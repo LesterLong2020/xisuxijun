@@ -9,7 +9,6 @@ const reTest = function () {
 
 const name = 'lester';
 
-module.exports = {
-  reTest,
-  name
-};
+module.exports = reTest;
+exports.reTest = reTest;
+exports.name = name;
