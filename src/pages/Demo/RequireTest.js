@@ -2,13 +2,18 @@
  * @Author lester
  * @Date 2021-01-14
  */
+let name = 'lester';
 
-const reTest = function () {
-  console.log(123)
+const sayHi = () => {
+  console.log('Hi', name)
 };
 
-const name = 'lester';
 
-module.exports = reTest;
-exports.reTest = reTest;
-exports.name = name;
+setTimeout(() => {
+  name = 'Kate';
+}, 500);
+
+module.exports = {
+  sayHi,
+  name
+};
