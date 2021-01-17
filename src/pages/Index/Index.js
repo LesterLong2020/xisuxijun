@@ -14,7 +14,9 @@ import Avatar from "@/assets/images/post6.png";
 // import '../Demo/Http';
 // import '../Demo/Import';
 // import '../Demo/DataType';
-import '../Demo/Array';
+// import '../Demo/Array';
+// import '../Demo/Iterator';
+import '../Demo/Generator';
 
 
 const render = () => {
