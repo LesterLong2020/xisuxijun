@@ -16,7 +16,8 @@ import Avatar from "@/assets/images/post6.png";
 // import '../Demo/DataType';
 // import '../Demo/Array';
 // import '../Demo/Iterator';
-import '../Demo/Generator';
+// import '../Demo/Generator';
+import '../Demo/AsyncAwait';
 
 
 const render = () => {
@@ -32,9 +33,9 @@ const render = () => {
 export default render();
 
 /**
- * react原理 generator async await nginx webpack常用配置 https原理 axios 跨域  transform
+ * react原理 async await nginx webpack常用配置 https原理 axios 跨域  transform
  * serverLess pwa service worker 路由 nodejs express
  *
  * call apply bind Promise Event Loop new操作 vue 防抖节流 闭包 响应式弹性布局 this指向 CommonJS AMD CMD require import 判断数据类型
- * 数组扁平化去重排序
+ * 数组扁平化去重排序 generator
  */
