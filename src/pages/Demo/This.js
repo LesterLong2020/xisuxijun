@@ -33,14 +33,14 @@ const obj = {
   },
 };
 
-obj.sayName();
+// obj.sayName();
 // obj.sayNameArrow();
 
 const sayName = obj.sayName;
 const sayNameArrow = obj.sayNameArrow;
 
-/*sayName();
-sayNameArrow();*/
+// sayName();
+// sayNameArrow();
 
 /*
 const obj = {

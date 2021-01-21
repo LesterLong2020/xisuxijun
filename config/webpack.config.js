@@ -2,8 +2,9 @@
  * Created by Lester on 2020/12/19
  */
 
-// const webpack = require('webpack');
+const webpack = require('webpack');
 const path = require('path');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -20,6 +21,8 @@ module.exports = {
         publicPath: './'
     },
     devServer: {
+        hot: true,
+        inline: true,
         compress: true,
         port: 8000,
         open: true,
@@ -32,9 +35,15 @@ module.exports = {
             }
         }
     },
+    watchOptions: {
+        poll: 1000,
+        aggregateTimeout: 500,
+        ignored: /node_modules/
+    },
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, '../src')
+            '@': path.resolve(__dirname, '../src'),
+            'src': path.resolve(__dirname, '../src'),
         }
     },
     performance: {
@@ -88,6 +97,7 @@ module.exports = {
         }]
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../public/index.html'),
@@ -105,6 +115,6 @@ module.exports = {
                 from: 'static/*',
                 to: '../dist/'
             }]
-        })
+        }),
     ]
 };

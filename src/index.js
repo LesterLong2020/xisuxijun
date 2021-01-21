@@ -5,11 +5,11 @@ document.getElementById('root').innerHTML = App;
 
 (function (win, doc, standardWidth) {
     function resizeBaseFontSize() {
-        const { clientWidth, offsetWidth, scrollWidth } = doc.documentElement;
-        const { clientWidth: bodyClientWidth, offsetWidth: bodyOffsetWidth, scrollWidth: bodyScrollWidth } = doc.body;
+        const { clientWidth, offsetWidth } = doc.documentElement;
+        const { clientWidth: bodyClientWidth, offsetWidth: bodyOffsetWidth } = doc.body;
         const { width: screenWidth, availWidth } = win.screen;
-        const width = clientWidth || bodyClientWidth || offsetWidth || bodyOffsetWidth || scrollWidth || bodyScrollWidth ||
-          screenWidth || availWidth || standardWidth;
+        const width = clientWidth || bodyClientWidth || offsetWidth || bodyOffsetWidth || screenWidth
+          || availWidth || standardWidth;
         doc.documentElement.style.fontSize = `${(width / standardWidth) * 10}px`;
         doc.documentElement.style.opacity = '1';
     }
