@@ -24,7 +24,7 @@ import '../Demo/Class';
 const render = () => {
   return (
     `<div class="${style.indexWrap}">` +
-      `<div class="${style.name}">Hello Lester 夕宿君兮66</div>` +
+      `<div class="${style.name}">Hello Lester 夕宿君兮6</div>` +
       `<input id="lester" />` +
       `<img class="${style.img}" src="${Avatar}" alt=""/>` +
     '</div>'

@@ -116,6 +116,6 @@ function defineArray (data) {
 // myData.info.declaration = '荆棘丛中 非鸾凤所栖之所';
 // console.log(myData.info.declaration);
 myData.arr.push(3, 4, 5, 6);
-// console.log(myData.arr);
+console.log(myData.arr);
 // myData.name = 'Kerry';
 // console.log(myData.name);
