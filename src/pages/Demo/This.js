@@ -3,7 +3,6 @@
  * @Date 2021-01-12
  */
 
-
 const arrowFn = () => {
   console.log(this)
 };
@@ -39,7 +38,7 @@ const obj = {
 const sayName = obj.sayName;
 const sayNameArrow = obj.sayNameArrow;
 
-// sayName();
+sayName();
 // sayNameArrow();
 
 /*

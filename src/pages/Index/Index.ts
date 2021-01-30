@@ -2,8 +2,11 @@
  * @Author lester
  * @Date 2020-12-22
  */
-import style from './style.less';
+
+
+import { copy } from "lester-tools";
 import Avatar from "src/assets/images/post6.png";
+import style from './style.less';
 // import '../Demo/EventLoop';
 // import '../Demo/Promise';
 // import '../Demo/Test';
@@ -18,13 +21,22 @@ import Avatar from "src/assets/images/post6.png";
 // import '../Demo/Iterator';
 // import '../Demo/Generator';
 // import '../Demo/AsyncAwait';
-import '../Demo/Class';
+// import '../Demo/Class';
+
+window.onload = function () {
+    if (document.getElementById('name')) {
+        document.getElementById('name').onclick = function () {
+            copy("我的名字")
+            console.log("123", copy)
+        };
+    }
+};
 
 
-const render = () => {
+const render: () => string = () => {
   return (
     `<div class="${style.indexWrap}">` +
-      `<div class="${style.name}">Hello Lester 夕宿君兮6</div>` +
+      `<div id="name" class="${style.name}">Hello Lester 夕宿君兮 哈哈哈</div>` +
       `<input id="lester" />` +
       `<img class="${style.img}" src="${Avatar}" alt=""/>` +
     '</div>'
@@ -34,9 +46,9 @@ const render = () => {
 export default render();
 
 /**
- * react原理 nginx webpack常用配置 https原理 axios transform
- * serverLess pwa service worker 路由 nodejs express class
+ * react原理 nginx webpack常用配置 axios transform flex box-sizing
+ * serverLess pwa service worker 路由 nodejs express
  *
  * call apply bind Promise Event Loop new操作 Reflect.construct vue 防抖节流 闭包 响应式弹性布局 this指向 CommonJS AMD CMD require import 判断数据类型
- * 数组扁平化去重排序 generator async await 跨域 http
+ * 数组扁平化去重排序 generator async await 跨域 http https原理 GET POST区别 class
  */
