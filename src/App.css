@@ -37,6 +37,16 @@ div {
     background: url("./assets/images/liq.png") no-repeat center;
 }
 
+.route-view {
+    margin-top: 2rem;
+}
+
+.route-view .index-wrap, .route-view .detail-wrap {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
 .wrap .img {
     width: 5rem;
     height: 5rem;
