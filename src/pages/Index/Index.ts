@@ -36,7 +36,7 @@ window.onload = function () {
 const render: () => string = () => {
   return (
     `<div class="${style.indexWrap}">` +
-      `<div id="name" class="${style.name}">Hello Lester 夕宿君兮 哈哈哈</div>` +
+      `<div id="name" class="${style.name}">Hello Lester 夕宿君兮</div>` +
       `<input id="lester" />` +
       `<img class="${style.img}" src="${Avatar}" alt=""/>` +
     '</div>'
