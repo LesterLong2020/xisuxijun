@@ -24,7 +24,6 @@ module.exports = function (env) {
             publicPath: './'
         },
         mode: env,
-        target: "web",
         devServer: {
             hot: true,
             inline: true,

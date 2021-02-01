@@ -6,6 +6,7 @@ if (rootEle) {
     rootEle.innerHTML = App;
 }
 
+Array.from(new Set([1, 2, 3]));
 
 (function (win, doc, standardWidth) {
     function resizeBaseFontSize() {
