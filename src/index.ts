@@ -1,7 +1,11 @@
 import "@babel/polyfill";
 import App from './App';
 
-document.getElementById('root').innerHTML = App;
+const rootEle: HTMLElement|null = document.getElementById('root');
+if (rootEle) {
+    rootEle.innerHTML = App;
+}
+
 
 (function (win, doc, standardWidth) {
     function resizeBaseFontSize() {

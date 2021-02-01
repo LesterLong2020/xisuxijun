@@ -24,7 +24,8 @@ const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const compiler = webpack(webpackConfig);
 const devServerOptions = {
     ...webpackConfig.devServer,
-    https: process.env.HTTPS === 'true'
+    https: process.env.HTTPS === 'true',
+    historyApiFallback: true
 };
 
 const server = new webpackDevServer(compiler, devServerOptions);

@@ -38,20 +38,22 @@ window.addEventListener('load', handleHashChange);*/
 const handlePopState = () => {
     const { pathname } = window.location;
     console.log(pathname);
-    document.querySelector('.route-view').innerHTML =
-        (routes.find((route: Route) => pathname.includes(route.path)) || routes[0]).component;
+    const ele: HTMLElement|null = document.querySelector('.route-view');
+    if (ele) {
+        ele.innerHTML = (routes.find((route: Route) => pathname.includes(route.path)) || routes[0]).component;
+    }
 };
+
 
 window.addEventListener("popstate", handlePopState);
 window.addEventListener('load', function () {
     handlePopState();
-    const linkParent: Element = document.querySelector('.route-view');
-    linkParent.addEventListener("click", (e:Event) => {
+    document.querySelector('.route-view')?.addEventListener("click", (e:Event) => {
         e.preventDefault();
         // @ts-ignore
         window.history.pushState(null, '', e.target.getAttribute("href"));
         handlePopState();
-    })
+    });
 });
 
 const render = () => {
