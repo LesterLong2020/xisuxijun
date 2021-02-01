@@ -15,9 +15,10 @@ process.on('unhandledRejection', err => {
 const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
 const webpackConfig = require("../config/webpack.config")('development');
+const IP = require("../config/get.ip");
 
 const PORT = parseInt(process.env.PORT, 10) || 8000;
-const HOST = process.env.HOST || 'localhost';
+const HOST = process.env.IP === 'true' ? IP : (process.env.HOST || 'localhost');
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 
 const compiler = webpack(webpackConfig);
