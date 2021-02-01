@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "lester-tools": "^1.0.6"
+    "lester-tools": "^1.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
