@@ -9,6 +9,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+// const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const SimpleProgressWebpackPlugin = require("simple-progress-webpack-plugin");
 
 module.exports = function (env) {
     const isDev = env === 'development';
@@ -124,6 +126,8 @@ module.exports = function (env) {
                     to: '../dist/'
                 }]
             }),
+            new SimpleProgressWebpackPlugin(),
+            // new BundleAnalyzerPlugin()
         ].filter(Boolean)
     }
 };
