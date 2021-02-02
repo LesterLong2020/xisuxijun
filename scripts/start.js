@@ -17,7 +17,7 @@ const webpackDevServer = require('webpack-dev-server');
 const webpackConfig = require("../config/webpack.config")('development');
 const IP = require("../config/get.ip");
 
-const PORT = parseInt(process.env.PORT, 10) || 8000;
+const PORT = parseInt(process.env.PORT, 10) || 8080;
 const HOST = process.env.IP === 'true' ? IP : (process.env.HOST || 'localhost');
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 

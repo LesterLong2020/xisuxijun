@@ -3,7 +3,6 @@
  * @Date 2020-12-22
  */
 
-
 import { copy } from "lester-tools";
 import Avatar from "src/assets/images/post6.png";
 import style from './style.less';

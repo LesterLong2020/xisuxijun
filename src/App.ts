@@ -16,26 +16,28 @@ interface Route {
 
 const routes: Route[] = [{
     path: "/index",
-    component: '<a class="index-wrap" href="/detail">首页</a>'
+    component: '<a class="index-wrap" href="#/detail">首页</a>'
 }, {
     path: "/detail",
-    component: '<a class="detail-wrap" href="/index">详情</a>'
+    component: '<a class="detail-wrap" href="#/index">详情</a>'
 }];
 
 /**
  * hash值改变时候处理
  */
-/*const handleHashChange = () => {
-    const path: string = window.location.hash.match(/(\/[\w\/]+)(\?|$=?)/)[1];
-    console.log(window.location.hash, window.location.hash.match(/(\/[\w\/]+)(\?|$=?)/)[1]);
-    document.querySelector('.route-view').innerHTML =
+const handleHashChange = (e: HashChangeEvent|any) => {
+    console.log(e);
+    const { hash } = window.location;
+    const path: string = ((hash as any).match(/(\/[\w\/]+)(\?|$=?)/) || [])[1];
+    console.log(window.location.hash, path);
+    (document.querySelector('.route-view') as any).innerHTML =
         (routes.find((route: Route) => route.path === path) || routes[0]).component;
 };
 
 window.addEventListener("hashchange", handleHashChange);
-window.addEventListener('load', handleHashChange);*/
+window.addEventListener('load', handleHashChange);
 
-const handlePopState = () => {
+/*const handlePopState = () => {
     const { pathname } = window.location;
     console.log(pathname);
     const ele: HTMLElement|null = document.querySelector('.route-view');
@@ -54,7 +56,7 @@ window.addEventListener('load', function () {
         window.history.pushState(null, '', e.target.getAttribute("href"));
         handlePopState();
     });
-});
+});*/
 
 const render = () => {
   return (
