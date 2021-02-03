@@ -57,7 +57,18 @@ module.exports = function (env) {
                 return assetFilename.endsWith('.js');
             }
         },
-        devtool: 'source-map',
+        devtool: 'inline-source-map',
+        optimization: {
+            splitChunks: {
+                chunks: 'async',   // initial、async和all
+                minSize: 30000,   // 形成一个新代码块最小的体积
+                maxSize: 0, //拆分之前最大的数值，默认为0，即不做限制
+                maxAsyncRequests: 5,   // 按需加载时候最大的并行请求数
+                maxInitialRequests: 3,   // 最大初始化请求数
+                automaticNameDelimiter: '-',   // 打包分割符
+                name: 'name'
+            },
+        },
         module: {
             rules: [{
                 test: /\.(js|jsx)$/,
