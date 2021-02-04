@@ -43,8 +43,9 @@ export default render();
 
 /**
  * react原理 nginx axios transform flex box-sizing
- * serverLess pwa service worker 路由 nodejs express
+ * serverLess pwa service worker web worker nodejs express
  *
- * call apply bind Promise Event Loop new操作 Reflect.construct vue 防抖节流 闭包 响应式弹性布局 this指向 CommonJS AMD CMD require import 判断数据类型
- * 数组扁平化去重排序 generator async await 跨域 http https原理 GET POST区别 class webpack常用配置
+ * call apply bind Promise Event Loop new操作 Reflect.construct vue 防抖节流 闭包 响应式弹性布局
+ * this指向 CommonJS AMD CMD require import 判断数据类型 数组扁平化去重排序
+ * generator async await 跨域 http https原理 GET POST区别 class webpack常用配置 路由
  */
