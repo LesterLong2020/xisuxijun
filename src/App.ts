@@ -34,8 +34,8 @@ const handleHashChange = (e: HashChangeEvent|any) => {
         (routes.find((route: Route) => route.path === path) || routes[0]).component;
 };
 
-window.addEventListener("hashchange", handleHashChange);
-window.addEventListener('load', handleHashChange);
+/*window.addEventListener("hashchange", handleHashChange);
+window.addEventListener('load', handleHashChange);*/
 
 /*const handlePopState = () => {
     const { pathname } = window.location;

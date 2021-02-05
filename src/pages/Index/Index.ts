@@ -21,6 +21,7 @@ import style from './style.less';
 // import '../Demo/Generator';
 // import '../Demo/AsyncAwait';
 // import '../Demo/Class';
+import '../Demo/WebWorker';
 
 window.onload = function () {
   document.getElementById('name')?.addEventListener('click', () => {
